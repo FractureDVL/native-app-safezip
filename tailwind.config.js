@@ -7,6 +7,14 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
+    borderRadius:{
+      'none': '0',
+      'sm': '0.125rem',
+      'md': '0.375rem',
+      'lg': '0.5rem',
+      'xl': '1.2rem',
+      'full': '9999px',
+    },
     extend: {
       colors: {
         primary: '#433878',  // Dark Purple

@@ -1,9 +1,9 @@
 import { View, Text} from "react-native";
 
-export default function FileList () {
+export default function FileList ({className}) {
     return(
-        <View>
-            <Text>Esta sera la lista de archivos</Text>
+        <View className={`${className}`}>
+            <Text style={{fontFamily: "Rethink-SemiBold", fontSize: 20}}>Tus Archivos</Text>
         </View>
     );
 }

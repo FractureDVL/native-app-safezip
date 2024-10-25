@@ -22,6 +22,21 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+    [
+      "expo-font",
+      {
+        "fonts": [
+          "./assets/fonts/RethinkSans-Bold.ttf",
+          "./assets/fonts/RethinkSans-ExtraBold.ttf",
+          "./assets/fonts/RethinkSans-Medium.ttf",
+          "./assets/fonts/RethinkSans-Regular.ttf",
+          "./assets/fonts/RethinkSans-SemiBold.ttf"
+        ]
+      }
+    ]
+  ]
   }
+  
 }
