@@ -1,11 +1,14 @@
-import React from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Feather from '@expo/vector-icons/Feather';
 
-export default function FilePicker({className=""}) {
-  const [files, setFiles] = React.useState<DocumentPicker.DocumentPickerAsset[]>([]);
+interface FilePickerProps {
+  className?: string;
+}
+
+export default function FilePicker({ className = "" }: FilePickerProps) {
+  const [files, setFiles] = useState<DocumentPicker.DocumentPickerAsset[]>([]);
 
   const pickDocuments = async () => {
     let result: DocumentPicker.DocumentPickerResult = await DocumentPicker.getDocumentAsync({
@@ -13,9 +16,8 @@ export default function FilePicker({className=""}) {
     });
 
     if (!result.canceled && result.assets) {
-      setFiles([...files, ...result.assets]);
-    } 
-    else if (result.canceled) {
+      setFiles(prevFiles => [...prevFiles, ...result.assets]);
+    } else if (result.canceled) {
       console.log('Selección cancelada'); 
     }
   };
@@ -33,8 +35,11 @@ export default function FilePicker({className=""}) {
         <Feather className="text-center mb-2" name="upload" size={30} color="#433878" />
         <Text className="text-primary text-center"
           style={{ fontFamily: "Rethink-SemiBold", fontSize: 20 }}
-          >Presiona acá para agregar archivos ...</Text>
+        >
+          Presiona acá para agregar archivos ...
+        </Text>
       </TouchableOpacity>
+      
       {/* <ScrollView className="border-t border-gray-300">
         {files.map((file, index) => (
           <View key={index} className="p-2 border-b border-gray-300">

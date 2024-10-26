@@ -1,20 +1,24 @@
 import React from "react";
-import { CompressIcon, ProtectIcon } from "./Icons";
+import { CompressIcon, ProtectIcon } from "../constants/Icons";
 import { View, ScrollView } from "react-native";
 import FilePicker from "../components/FilePicker"
 import FileList from "../components/FileList"
-import Navbar from "./Navbar";
-import Button from "./Button"
+import Navbar from "../components/Navbar";
+import Button from "../components/Button";
+import Separator from "../components/Separator"
 
 export default function Main() {
   return (
     <View className="mt-12 mx-6">
         <ScrollView>
+          {/* Greetings message*/}
           <Navbar />
+          {/* Separator Line*/}
+          <Separator className="mt-8" />
           {/* File picker input */}
-          <FilePicker className="mt-6"/>
+          <FilePicker className="mt-8"/>
           {/* Options */}
-          <View className="flex-row justify-between mt-6">
+          <View className="flex-row justify-between mt-8">
             {/* Compress option button */}
             <Button title="Comprimir"
               className="flex-col bg-primary px-8 py-4 justify-center rounded-xl flex-1 mr-2" 
@@ -36,6 +40,3 @@ export default function Main() {
     </View>
   );
 }
-
-
-  

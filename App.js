@@ -1,8 +1,8 @@
 import "./global.css"
 import { useEffect, useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { View, Platform , Text, ActivityIndicator  } from 'react-native';
-import Main from './components/Main';
+import { View, Platform, ActivityIndicator  } from 'react-native';
+import Main from './src/screens/Main';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
