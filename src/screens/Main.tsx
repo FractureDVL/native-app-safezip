@@ -6,6 +6,7 @@ import FileList from "../components/FileList"
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Separator from "../components/Separator"
+import { colorMap } from "../constants/Colors";
 
 export default function Main() {
   return (
@@ -24,14 +25,14 @@ export default function Main() {
               className="flex-col bg-primary px-8 py-4 justify-center rounded-xl flex-1 mr-2" 
               titleClass="text-foreground text-center" 
               style={{ fontFamily: "Rethink-SemiBold", fontSize: 16}}> 
-              <CompressIcon className="text-center mb-3"/>
+              <CompressIcon className="text-center mb-3" color={colorMap.foreground}/>
             </Button>
             {/* Encrypt option button */}
             <Button title="Proteger"
               className="flex-col bg-foreground px-8 py-4 justify-center rounded-xl flex-1 ml-2" 
-              titleClass="text-primary text-center" 
+              titleClass="text-center" 
               style={{ fontFamily: "Rethink-SemiBold", fontSize: 16}}> 
-              <ProtectIcon className="text-center mb-3" color={"#433878"}/>
+              <ProtectIcon className="text-center mb-3" color={colorMap.primary}/>
             </Button>
           </View>
           {/* List of selected files*/}

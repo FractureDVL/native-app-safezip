@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import Feather from '@expo/vector-icons/Feather';
+import { colorMap } from '../constants/Colors';
 
 interface FilePickerProps {
   className?: string;
@@ -32,7 +33,7 @@ export default function FilePicker({ className = "" }: FilePickerProps) {
       <TouchableOpacity 
           className="border-primary bg-foreground border-dashed border-2 p-8 rounded-[20px] text-center" 
           onPress={pickDocuments}>
-        <Feather className="text-center mb-2" name="upload" size={30} color="#433878" />
+        <Feather className="text-center mb-2" name="upload" size={30} color={colorMap.primary} />
         <Text className="text-primary text-center"
           style={{ fontFamily: "Rethink-SemiBold", fontSize: 20 }}
         >
