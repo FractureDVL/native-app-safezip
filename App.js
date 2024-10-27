@@ -4,15 +4,14 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Platform, ActivityIndicator  } from 'react-native';
 import Main from './src/screens/Main';
 import * as Font from 'expo-font';
-import AppLoading from 'expo-app-loading';
 
 const loadFonts = async () => {
   await Font.loadAsync({
-    'Rethink-Bold': require('./assets/fonts/RethinkSans-Bold.ttf'),
-    'Rethink-ExtraBold': require('./assets/fonts/RethinkSans-ExtraBold.ttf'),
-    'Rethink-Medium': require('./assets/fonts/RethinkSans-Medium.ttf'),
-    'Rethink-Regular': require('./assets/fonts/RethinkSans-Regular.ttf'),
-    'Rethink-SemiBold': require('./assets/fonts/RethinkSans-SemiBold.ttf'),
+    'Rethink-Bold': require('./src/assets/fonts/RethinkSans-Bold.ttf'),
+    'Rethink-ExtraBold': require('./src/assets/fonts/RethinkSans-ExtraBold.ttf'),
+    'Rethink-Medium': require('./src/assets/fonts/RethinkSans-Medium.ttf'),
+    'Rethink-Regular': require('./src/assets/fonts/RethinkSans-Regular.ttf'),
+    'Rethink-SemiBold': require('./src/assets/fonts/RethinkSans-SemiBold.ttf'),
   });
 };
 
@@ -35,9 +34,9 @@ export default function App() {
   }
 
   return (
-    <View>
+    <View className="flex-1">
       {Platform.OS !== "web" && <StatusBar />}
-      <Main />
+      <Main/>
     </View>
   );
 }
