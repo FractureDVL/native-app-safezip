@@ -1,9 +1,11 @@
 import "./global.css"
 import { useEffect, useState } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { View, Platform, ActivityIndicator  } from 'react-native';
+import { View, ActivityIndicator  } from 'react-native';
 import Main from './src/screens/Main';
 import * as Font from 'expo-font';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { FileProvider } from "./src/context/FileContext";
+
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -34,10 +36,13 @@ export default function App() {
   }
 
   return (
-    <View className="flex-1">
-      {Platform.OS !== "web" && <StatusBar />}
-      <Main/>
-    </View>
+     <>
+      <SafeAreaView style={{flex: 1}}/>    
+        <FileProvider>
+            <Main/>
+        </FileProvider>
+      <SafeAreaView/>
+     </>
   );
 }
 

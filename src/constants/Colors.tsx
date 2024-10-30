@@ -4,4 +4,6 @@ export const colorMap = {
     accent: '#BA9BFC',      // Light Purple
     background: '#DCCBFF',  // Lighter Purple
     foreground: '#F3EAFF',  // Lightest Purple
+    other: '#FBFCFF', // background 
+    other2: '#f9f6ff'
 };

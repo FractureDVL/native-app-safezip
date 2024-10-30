@@ -1,41 +1,62 @@
-import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import React, { Fragment } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import { colorMap } from '../constants/Colors';
 import Button from './Button';
 import { ArrowRightIcon } from '../constants/Icons';
-import NotFoundFiles from '../assets/empty-files.svg';
+import NotFoundFiles from '../assets/empty-files';
+import { useFileContext } from '../context/FileContext';
 
 interface FileListProps {
   className?: string;
 }
 
 export default function FileList({ className }: FileListProps) {
-  const showAll = () =>{
-
-  }
+  const { files } = useFileContext();
 
   return (
     <View className={className}>
       <View className="flex-row justify-between align-middle">
         {/* Component title*/}
         <Text className="flex-1 m-auto" 
-            style={{ fontFamily: "Rethink-SemiBold", fontSize: 20, color:colorMap.secondary }}>Tus Archivos</Text>
+              style={{ fontFamily: "Rethink-SemiBold", fontSize: 20, color: colorMap.secondary }}>
+          Tus Archivos
+        </Text>
         {/* Show all list*/}
         <Button title="Ver todo" 
-            iconPosition="right" 
-            className="bg-white border-2 rounded-lg pl-4 pr-2 py-2 border-secondary" 
-            style={{ fontFamily: "Rethink-SemiBold", color: colorMap.secondary, fontSize: 16 }}>
+                iconPosition="right" 
+                className="border-2 rounded-lg pl-4 pr-2 py-2 border-secondary" 
+                style={{ fontFamily: "Rethink-SemiBold", color: colorMap.secondary, fontSize: 16 }}>
           <ArrowRightIcon style={{ color: colorMap.secondary }}/>
         </Button>
       </View>
 
-      <View className="w-full justify-center items-center py-5">
-        <NotFoundFiles width={150} height={150} />
-        <Text className="mt-4"
-         style={{ fontFamily: "Rethink-SemiBold", color: colorMap.secondary, fontSize: 18 }}>Sin archivos aún</Text>
-        <Text className=""
-        style={{ fontFamily: "Rethink-Regular", color: colorMap.secondary, fontSize: 16 }}>¡Agrega algunos para empezar!</Text>
-      </View>
+      <ScrollView>
+        <View className="bg-white rounded-xl px-4 py-6 mt-4 w-full justify-center items-center">
+          {files && files.length > 0 ? (
+            <Fragment>
+              {files.slice(0, 3).map((file, index) => (
+                <View key={index} className='p-2 border-b border-gray-300'>
+                  <Text className="text-lg font-semibold">{file.name}</Text>
+                </View>
+              ))}
+              {files.length > 3 && (
+                <Text className="text-lg font-semibold">...</Text>
+              )}
+            </Fragment>
+          ) : (
+            <Fragment>
+              {/* Empty state No files*/}
+              <NotFoundFiles width={120} height={120} />
+              <Text className="mt-4" style={{ fontFamily: "Rethink-SemiBold", color: colorMap.secondary, fontSize: 14 }}>
+                Sin archivos aún
+              </Text>
+              <Text style={{ fontFamily: "Rethink-Regular", color: colorMap.secondary, fontSize: 14 }}>
+                ¡Agrega algunos para empezar!
+              </Text>
+            </Fragment>
+          )}
+        </View>
+      </ScrollView>
     </View>
   );
 }

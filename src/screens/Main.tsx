@@ -1,6 +1,6 @@
 import React from "react";
 import { CompressIcon, ProtectIcon } from "../constants/Icons";
-import { View, ScrollView } from "react-native";
+import { View } from "react-native";
 import FilePicker from "../components/FilePicker"
 import FileList from "../components/FileList"
 import Navbar from "../components/Navbar";
@@ -10,13 +10,11 @@ import { colorMap } from "../constants/Colors";
 
 export default function Main() {
   return (
-    <View className="mt-16 mx-6">
+    <View className="pt-16 pb-8 px-8 h-full justify-around bg-[#f9f6ff]" >
           {/* Greetings message*/}
           <Navbar />
           {/* Separator Line*/}
           <Separator className="mt-8" />
-          {/* File picker input */}
-          <FilePicker className="mt-8"/>
           {/* Options */}
           <View className="flex-row justify-between mt-8">
             {/* Compress option button */}
@@ -34,8 +32,17 @@ export default function Main() {
               <ProtectIcon className="text-center mb-3" color={colorMap.secondary}/>
             </Button>
           </View>
+          {/* File picker input */}
+          <FilePicker className="mt-8"/>
           {/* List of selected files*/}
-          <FileList className={"mt-6"}/>
+          <FileList className={"mt-6 "}/>
+          {/* Main button*/}
+          <Button title="Comprimir" 
+            className="bg-secondary rounded-xl py-4 px-4 justify-center items-center mt-8" 
+            titleClass="text-foreground ml-4" 
+            style={{ fontFamily: "Rethink-SemiBold", fontSize: 20}}>
+              <CompressIcon className="text-center" color={colorMap.foreground} />
+          </Button>
     </View>
   );
 }
