@@ -25,3 +25,19 @@ export const MoreOptionsIcon = (props) => (
 export const SettingsIcon = (props) => (
   <Feather name="settings" size={24} color="white" {...props} />
 );
+
+export const WordIcon = (props) => (
+  <FontAwesome name="file-word-o" size={24} color="black" {...props}/>
+);
+
+export const ExcelIcon = (props) => (
+  <FontAwesome name="file-excel-o" size={24} color="black"  {...props} />
+);
+
+export const PdfIcon = (props) => (
+  <FontAwesome name="file-pdf-o" size={24} color="black" {...props} />
+);
+
+export const VideoIcon = (props) => (
+  <FontAwesome name="file-video-o" size={24} color="black" {...props} />
+);

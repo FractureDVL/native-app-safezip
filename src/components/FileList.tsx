@@ -5,10 +5,27 @@ import Button from './Button';
 import { ArrowRightIcon } from '../constants/Icons';
 import NotFoundFiles from '../assets/empty-files';
 import { useFileContext } from '../context/FileContext';
+import { WordIcon, ExcelIcon, PdfIcon, VideoIcon } from '../constants/Icons';
 
 interface FileListProps {
   className?: string;
 }
+
+const getFileIcon = (extension: string) => {
+  switch (extension) {
+    case 'docx':
+    case 'doc':
+      return <WordIcon color="#BA9BFC" />; 
+    case 'xlsx':
+    case 'xls':
+      return <ExcelIcon color="#BA9BFC" />;
+    case 'pdf':
+      return <PdfIcon color="#BA9BFC" />;
+    case 'mp4':
+    case 'avi':
+      return <VideoIcon color="#BA9BFC" />;
+  }
+};
 
 export default function FileList({ className }: FileListProps) {
   const { files } = useFileContext();
@@ -31,14 +48,28 @@ export default function FileList({ className }: FileListProps) {
       </View>
 
       <ScrollView>
-        <View className="bg-white rounded-xl px-4 py-6 mt-4 w-full justify-center items-center">
+        <View className="bg-white rounded-xl px-4 py-6 mt-4 w-full">
           {files && files.length > 0 ? (
             <Fragment>
-              {files.slice(0, 3).map((file, index) => (
-                <View key={index} className='p-2 border-b border-gray-300'>
-                  <Text className="text-lg font-semibold">{file.name}</Text>
-                </View>
-              ))}
+              {files.slice(0, 3).map((file, index) => {
+                const fileName = file.name.replace(/\.\w+$/, ''); // File name without extension
+
+                return (
+                  <View key={index} className="p-2 border-b border-gray-300">
+                    {/* Container for icon and file name */}
+                    <View className="flex-row items-center space-x-6">
+                      {/* File icon */}
+                      {getFileIcon(file.name.split('.').pop())}
+                      
+                      {/* File name (truncated if too long) */}
+                      <Text className="text-lg font-semibold truncate" style={{ marginLeft: 10, maxWidth: '80%' }}>
+                        {fileName}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })}
+              
               {files.length > 3 && (
                 <Text className="text-lg font-semibold">...</Text>
               )}
