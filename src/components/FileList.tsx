@@ -5,7 +5,7 @@ import Button from './Button';
 import { ArrowRightIcon } from '../constants/Icons';
 import NotFoundFiles from '../assets/empty-files';
 import { useFileContext } from '../context/FileContext';
-import { WordIcon, ExcelIcon, PdfIcon, VideoIcon } from '../constants/Icons';
+import { WordIcon, ExcelIcon, PdfIcon, VideoIcon , ImgIcon, AudioIcon } from '../constants/Icons';
 
 interface FileListProps {
   className?: string;
@@ -24,6 +24,16 @@ const getFileIcon = (extension: string) => {
     case 'mp4':
     case 'avi':
       return <VideoIcon color="#BA9BFC" />;
+    case 'jpeg':
+    case 'jpg':
+    case 'png':
+    case 'gif':
+    case 'svg':
+      return <ImgIcon color="#BA9BFC" />;
+    case 'mp4':
+    case 'avi':
+    case 'mp3':
+      return <AudioIcon color="#BA9BFC" />;
   }
 };
 

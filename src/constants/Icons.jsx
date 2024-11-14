@@ -41,3 +41,11 @@ export const PdfIcon = (props) => (
 export const VideoIcon = (props) => (
   <FontAwesome name="file-video-o" size={24} color="black" {...props} />
 );
+
+export const ImgIcon = (props) => (
+  <FontAwesome name="image" size={24} color="black" {...props} />
+);
+
+export const AudioIcon = (props) => (
+  <FontAwesome name="file-audio-o" size={24} color="black" {...props} />
+);
