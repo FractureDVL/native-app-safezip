@@ -5,37 +5,13 @@ import Button from './Button';
 import { ArrowRightIcon } from '../constants/Icons';
 import NotFoundFiles from '../assets/empty-files';
 import { useFileContext } from '../context/FileContext';
-import { WordIcon, ExcelIcon, PdfIcon, VideoIcon , ImgIcon, AudioIcon } from '../constants/Icons';
+import FileItem from './FileItem';
 
 interface FileListProps {
   className?: string;
 }
 
-const getFileIcon = (extension: string) => {
-  switch (extension) {
-    case 'docx':
-    case 'doc':
-      return <WordIcon color="#BA9BFC" />; 
-    case 'xlsx':
-    case 'xls':
-      return <ExcelIcon color="#BA9BFC" />;
-    case 'pdf':
-      return <PdfIcon color="#BA9BFC" />;
-    case 'mp4':
-    case 'avi':
-      return <VideoIcon color="#BA9BFC" />;
-    case 'jpeg':
-    case 'jpg':
-    case 'png':
-    case 'gif':
-    case 'svg':
-      return <ImgIcon color="#BA9BFC" />;
-    case 'mp4':
-    case 'avi':
-    case 'mp3':
-      return <AudioIcon color="#BA9BFC" />;
-  }
-};
+
 
 export default function FileList({ className }: FileListProps) {
   const { files } = useFileContext();
@@ -56,28 +32,14 @@ export default function FileList({ className }: FileListProps) {
           <ArrowRightIcon style={{ color: colorMap.secondary }}/>
         </Button>
       </View>
-      <ScrollView>
+      <View>
           {files && files.length > 0 ? (
               <View className="bg-white rounded-xl px-4 py-6 mt-4 w-full">
-                    {files.slice(0, 3).map((file, index) => {
-                    const fileName = file.name.replace(/\.\w+$/, '');
-
+                    {files.slice(0, 3).map((item, index) => {
                     return (
-                      <View key={index} className="p-2 border-b border-gray-300">
-                        {/* Container for icon and file name */}
-                        <View className="flex-row items-center space-x-6">
-                          {/* File icon */}
-                          {getFileIcon(file.name.split('.').pop())}
-                          
-                          {/* File name (truncated if too long) */}
-                          <Text className="text-lg font-semibold truncate" style={{ marginLeft: 10, maxWidth: '80%' }}>
-                            {fileName}
-                          </Text>
-                        </View>
-                      </View>
+                      <FileItem key={index} file={item}/>
                     );
                   })}
-                  
                   {files.length > 3 && (
                     <Text className="text-lg font-semibold">...</Text>
                   )}
@@ -96,7 +58,7 @@ export default function FileList({ className }: FileListProps) {
                 </View>
               </View>
           )}
-      </ScrollView>
+      </View>
     </View>
   );
 }

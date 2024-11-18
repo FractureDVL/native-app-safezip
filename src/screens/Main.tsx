@@ -7,10 +7,11 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Separator from "../components/Separator"
 import { colorMap } from "../constants/Colors";
+import tw from 'twrnc';
 
 export default function Main() {
   return (
-    <View className="pt-16 pb-8 px-8 h-full justify-around bg-[#f9f6ff]" >
+    <View style={tw`pt-16 pb-8 px-8 h-full justify-around bg-other`} >
           {/* Greetings message*/}
           <Navbar />
           {/* Separator Line*/}
