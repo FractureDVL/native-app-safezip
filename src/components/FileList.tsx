@@ -56,47 +56,46 @@ export default function FileList({ className }: FileListProps) {
           <ArrowRightIcon style={{ color: colorMap.secondary }}/>
         </Button>
       </View>
-
       <ScrollView>
-        <View className="bg-white rounded-xl px-4 py-6 mt-4 w-full">
           {files && files.length > 0 ? (
-            <Fragment>
-              {files.slice(0, 3).map((file, index) => {
-                const fileName = file.name.replace(/\.\w+$/, ''); // File name without extension
+              <View className="bg-white rounded-xl px-4 py-6 mt-4 w-full">
+                    {files.slice(0, 3).map((file, index) => {
+                    const fileName = file.name.replace(/\.\w+$/, '');
 
-                return (
-                  <View key={index} className="p-2 border-b border-gray-300">
-                    {/* Container for icon and file name */}
-                    <View className="flex-row items-center space-x-6">
-                      {/* File icon */}
-                      {getFileIcon(file.name.split('.').pop())}
-                      
-                      {/* File name (truncated if too long) */}
-                      <Text className="text-lg font-semibold truncate" style={{ marginLeft: 10, maxWidth: '80%' }}>
-                        {fileName}
-                      </Text>
-                    </View>
-                  </View>
-                );
-              })}
-              
-              {files.length > 3 && (
-                <Text className="text-lg font-semibold">...</Text>
-              )}
-            </Fragment>
+                    return (
+                      <View key={index} className="p-2 border-b border-gray-300">
+                        {/* Container for icon and file name */}
+                        <View className="flex-row items-center space-x-6">
+                          {/* File icon */}
+                          {getFileIcon(file.name.split('.').pop())}
+                          
+                          {/* File name (truncated if too long) */}
+                          <Text className="text-lg font-semibold truncate" style={{ marginLeft: 10, maxWidth: '80%' }}>
+                            {fileName}
+                          </Text>
+                        </View>
+                      </View>
+                    );
+                  })}
+                  
+                  {files.length > 3 && (
+                    <Text className="text-lg font-semibold">...</Text>
+                  )}
+              </View>
           ) : (
-            <Fragment>
-              {/* Empty state No files*/}
-              <NotFoundFiles width={120} height={120} />
-              <Text className="mt-4" style={{ fontFamily: "Rethink-SemiBold", color: colorMap.secondary, fontSize: 14 }}>
-                Sin archivos aún
-              </Text>
-              <Text style={{ fontFamily: "Rethink-Regular", color: colorMap.secondary, fontSize: 14 }}>
-                ¡Agrega algunos para empezar!
-              </Text>
-            </Fragment>
+            <View className="bg-white rounded-xl px-4 py-6 mt-4">
+                {/* Empty state No files */}
+                <View className="flex justify-center items-center m-auto">
+                  <NotFoundFiles width={120} height={120} />
+                  <Text className="mt-4 text-center" style={{ fontFamily: "Rethink-SemiBold", color: colorMap.secondary, fontSize: 14 }}>
+                    Sin archivos aún
+                  </Text>
+                  <Text className="text-center" style={{ fontFamily: "Rethink-Regular", color: colorMap.secondary, fontSize: 14 }}>
+                    ¡Agrega algunos para empezar!
+                  </Text>
+                </View>
+              </View>
           )}
-        </View>
       </ScrollView>
     </View>
   );
