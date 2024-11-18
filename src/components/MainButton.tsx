@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons';  
 import { colorMap } from '../constants/Colors';
@@ -7,20 +7,26 @@ import { useFileContext } from '../context/FileContext';
 import { typography } from '../constants/Typography';
 
 export default function MainButton() {
-    const { option } = useFileContext();
+    const { option , files, compressFiles} = useFileContext();
   
     const text = option === "compress" ? "Comprimir" : "Proteger";
     const buttonColor = colorMap.other;
+    const backgroundColor = files.length ? colorMap.secondary : colorMap.accent 
+
+    const handleOnPress = () => {
+        compressFiles(files);
+    }
 
     return (
-        <>
+        < >
             {option === "compress" ? (
                 <FontAwesome.Button
                     name={"compress"}
                     size={24}
                     color={buttonColor}
-                    backgroundColor={colorMap.secondary}
+                    backgroundColor={backgroundColor}
                     style={styles.button}
+                    onPress={handleOnPress}
                 >
                     <Text style={{ color: buttonColor, fontSize:20, fontFamily: typography.semibold  }}>{text}</Text>
                 </FontAwesome.Button>
@@ -29,8 +35,9 @@ export default function MainButton() {
                     name={"lock-open"}
                     size={24}
                     color={buttonColor}
-                    backgroundColor={colorMap.secondary}
+                    backgroundColor={backgroundColor}
                     style={styles.button}
+                    onPress={handleOnPress}
                 >
                     <Text style={{ color: buttonColor, fontSize:20,  fontFamily: typography.semibold  }}>{text}</Text>
                 </MaterialIcons.Button>

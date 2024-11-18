@@ -6,7 +6,7 @@ import { useFileContext } from '../context/FileContext';
 import FileItem from './FileItem';
 import { typography } from '../constants/Typography';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
+import Entypo from '@expo/vector-icons/Entypo';
 
 export default function FileList({ navigation }) {
   const { files } = useFileContext();
@@ -28,7 +28,7 @@ export default function FileList({ navigation }) {
             size={24} style={styles.button_all} 
             color={colorMap.secondary}
             onPress={handleSeeAll}
-            >Ver todo</MaterialIcons.Button>
+            >Ver todos</MaterialIcons.Button>
       </View>
       <View>
           {files && files.length > 0 ? (
@@ -39,7 +39,12 @@ export default function FileList({ navigation }) {
                     );
                   })}
                   {files.length > 3 && (
-                    <Text className="text-center">...</Text>
+                    <View className='items-center'>
+                      <Entypo name="dots-three-horizontal"
+                        size={16} 
+                        color={colorMap.darkpurple} 
+                        style={{backgroundColor: colorMap.foreground, paddingHorizontal:8, borderRadius:8}} />
+                    </View>
                   )}
               </View>
           ) : (

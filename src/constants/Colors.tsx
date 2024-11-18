@@ -5,5 +5,6 @@ export const colorMap = {
     background: '#DCCBFF',
     foreground: '#F3EAFF',
     other: '#FBFCFF',
-    other2: '#F9F6FF'
+    other2: '#F9F6FF',
+    gray: "#777777"
 };
