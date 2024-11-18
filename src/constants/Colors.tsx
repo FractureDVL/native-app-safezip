@@ -1,9 +1,9 @@
 export const colorMap = {
-    primary: '#433878',     // Dark Purple
-    secondary: '#7E60BF',   // Purple
-    accent: '#BA9BFC',      // Light Purple
-    background: '#DCCBFF',  // Lighter Purple
-    foreground: '#F3EAFF',  // Lightest Purple
-    other: '#FBFCFF', // background 
-    other2: '#f9f6ff'
+    darkpurple: '#433878',
+    secondary: '#7E60BF',
+    accent: '#BA9BFC',
+    background: '#DCCBFF',
+    foreground: '#F3EAFF',
+    other: '#FBFCFF',
+    other2: '#F9F6FF'
 };

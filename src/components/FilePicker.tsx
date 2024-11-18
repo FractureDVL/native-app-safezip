@@ -4,6 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import Feather from '@expo/vector-icons/Feather';
 import { colorMap } from '../constants/Colors';
 import { useFileContext } from '../context/FileContext';
+import React from 'react';
 
 interface FilePickerProps {
   className?: string;

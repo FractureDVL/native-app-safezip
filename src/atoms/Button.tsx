@@ -8,6 +8,7 @@ interface ButtonProps {
   children?: ReactNode;
   style?: StyleProp<TextStyle>;
   iconPosition?: "left" | "right" | "top" | "bottom";
+  onPress?: () => {}
 }
 
 export default function Button({
@@ -17,6 +18,7 @@ export default function Button({
   children,
   style,
   iconPosition = "left",
+  onPress
 }: ButtonProps) {
   
   const containerStyle: StyleProp<ViewStyle> = {
@@ -26,7 +28,7 @@ export default function Button({
   };
 
   return (
-    <TouchableOpacity className={className} style={{ flexDirection: containerStyle.flexDirection }}>
+    <TouchableOpacity className={className} style={{ flexDirection: containerStyle.flexDirection }} onPress={onPress}>
       {iconPosition === "left" || iconPosition === "top" ? children : null}
       <Text className={titleClass} style={style}>{title}</Text>
       {iconPosition === "right" || iconPosition === "bottom" ? children : null}

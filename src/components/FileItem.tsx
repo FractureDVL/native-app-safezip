@@ -1,59 +1,69 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import { WordIcon, ExcelIcon, PdfIcon, VideoIcon , ImgIcon, AudioIcon } from '../constants/Icons';
+import { WordIcon, ExcelIcon, PdfIcon, VideoIcon, ImgIcon, AudioIcon } from '../constants/Icons';
 import { colorMap } from '../constants/Colors';
-
+import { Badge } from '../atoms/Badge';
 
 const getFileIcon = (extension: string) => {
-    switch (extension) {
-      case 'docx':
-      case 'doc':
-        return <WordIcon color="#BA9BFC" />; 
-      case 'xlsx':
-      case 'xls':
-        return <ExcelIcon color="#BA9BFC" />;
-      case 'pdf':
-        return <PdfIcon color="#BA9BFC" />;
-      case 'mp4':
-      case 'avi':
-        return <VideoIcon color="#BA9BFC" />;
-      case 'jpeg':
-      case 'jpg':
-      case 'png':
-      case 'gif':
-      case 'svg':
-        return <ImgIcon color="#BA9BFC" />;
-      case 'mp4':
-      case 'avi':
-      case 'mp3':
-        return <AudioIcon color="#BA9BFC" />;
-    }
-  };
+  switch (extension) {
+    case 'docx':
+    case 'doc':
+      return <WordIcon color="#433878" />;
+    case 'xlsx':
+    case 'xls':
+      return <ExcelIcon color="#433878" />;
+    case 'pdf':
+      return <PdfIcon color="#433878" />;
+    case 'mp4':
+    case 'avi':
+      return <VideoIcon color="#433878" />;
+    case 'jpeg':
+    case 'jpg':
+    case 'png':
+    case 'gif':
+    case 'svg':
+      return <ImgIcon color="#433878" />;
+    case 'mp3':
+      return <AudioIcon color="#433878" />;
+    default:
+      return null;
+  }
+};
 
 interface FileItemProps {
-    className? : String,
-    file: any
+  className?: string;
+  file: any;
 }
 
-export default function FileItem ({file}: FileItemProps) {
+export default function FileItem({ file }: FileItemProps) {
+  const filename = file.name.replace(/\.\w+$/, '');
+  const extension = file.name.split('.').pop()?.toUpperCase() || '';
 
-    const filename = file.name.replace(/\.\w+$/, '');
-
-    return(
-      <>
-        {/* Container for icon and file name */}
-        <View className="flex-row items-center space-x-6 bg-foreground p-4 rounded-lg">
-        {/* File icon */}
-        <View className="p-2 bg-accent rounded-lg">
-          <View className='p-2 bg-primary rounded-lg'>
-            {getFileIcon(file.name.split('.').pop())}
+  return (
+    <>
+      {/* Contenedor para ícono y nombre del archivo */}
+      <View className="flex-row bg-foreground p-4 rounded-lg mb-2">
+        {/* Ícono del archivo */}
+        <View className="p-2 bg-background rounded-lg">
+          <View className="p-2 bg-accent rounded-lg">
+            {getFileIcon(extension.toLowerCase())}
           </View>
         </View>
-        {/* File name (truncated if too long) */}
-        <Text className="text-lg font-semibold truncate" style={{ marginLeft: 10, maxWidth: '80%', fontFamily: "Rethink-SemiBold",  color: colorMap.primary }}>
-          {filename}
-        </Text>
+        {/* Nombre del archivo (truncado si es muy largo) */}
+        <View className="flex-1 pl-4 justify-between">
+          <Text
+            className=" font-semibold truncate text-start"
+            style={{
+              fontFamily: 'Rethink-SemiBold',
+              color: colorMap.darkpurple,
+            }}
+          >
+            {filename}
+          </Text>
+          {/* Pasar la extensión al Badge */}
+          <Badge text={extension} />
+        </View>
       </View>
-      </>
-    )
+    </>
+  );
 }

@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#433878',  // Dark Purple
+        darkpurple: '#433878',  // Dark Purple
         secondary: '#7E60BF', // Purple
         accent: '#BA9BFC',    // Light Purple
         background: '#DCCBFF', // Lighter Purple
