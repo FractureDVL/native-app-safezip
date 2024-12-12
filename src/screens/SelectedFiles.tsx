@@ -1,8 +1,7 @@
 import React from "react"
-import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { StyleSheet, View, ScrollView } from "react-native"
 import { useFileContext } from "../context/FileContext";
 import FileItem from "../components/FileItem";
-import NotFoundFiles from "../assets/empty-files"
 
 
 export default function SelectedFiles() {

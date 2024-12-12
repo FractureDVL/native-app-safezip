@@ -2,6 +2,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Feather from '@expo/vector-icons/Feather';
 
+
 export const CompressIcon = (props) => (
   <FontAwesome name="compress" size={24} color="white" {... props} />
 );
@@ -49,3 +50,7 @@ export const ImgIcon = (props) => (
 export const AudioIcon = (props) => (
   <FontAwesome name="file-audio-o" size={24} color="black" {...props} />
 );
+
+export const FileIcon = (props)=> (
+  <FontAwesome name="file" size={24} color="black"  {...props} />
+)

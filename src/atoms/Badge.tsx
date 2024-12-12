@@ -1,6 +1,7 @@
 import { View , Text, StyleSheet} from "react-native"
 import { colorMap } from "../constants/Colors";
 import { typography } from "../constants/Typography";
+import React from "react";
 
 interface BadgeProps {
     text : string
@@ -26,7 +27,7 @@ const textStyles = StyleSheet.create({
 
 const badgeStyles = StyleSheet.create({
     container: {
-      backgroundColor: colorMap.darkpurple,
+      backgroundColor: colorMap.secondary,
       alignSelf: "flex-start", 
       flexShrink: 1,
       paddingVertical: 2,

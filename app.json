@@ -12,9 +12,18 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library.",
+        "NSCameraUsageDescription": "This app needs access to your camera.",
+        "NSDocumentsFolderUsageDescription": "This app needs access to your documents folder."
+      }
     },
     "android": {
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -24,19 +33,18 @@
       "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
-    [
-      "expo-font",
-      {
-        "fonts": [
-          "./src/assets/fonts/RethinkSans-Bold.ttf",
-          "./src/assets/fonts/RethinkSans-ExtraBold.ttf",
-          "./src/assets/fonts/RethinkSans-Medium.ttf",
-          "./src/assets/fonts/RethinkSans-Regular.ttf",
-          "./src/assets/fonts/RethinkSans-SemiBold.ttf"
-        ]
-      }
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./src/assets/fonts/RethinkSans-Bold.ttf",
+            "./src/assets/fonts/RethinkSans-ExtraBold.ttf",
+            "./src/assets/fonts/RethinkSans-Medium.ttf",
+            "./src/assets/fonts/RethinkSans-Regular.ttf",
+            "./src/assets/fonts/RethinkSans-SemiBold.ttf"
+          ]
+        }
+      ]
     ]
-  ]
   }
-  
 }
